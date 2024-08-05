@@ -16,7 +16,7 @@ const authMiddleware = async (req, res, next) => {
       throw new Error("No token provided");
     }
 
-    const decoded = checkToken(token);
+    const decoded = await checkToken(token);
     if (!decoded || !decoded.email) {
       throw new Error("Invalid token");
     }
