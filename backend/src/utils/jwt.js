@@ -11,3 +11,8 @@ export async function generateToken(payload) {
   });
   return generatedToken;
 }
+
+export async function checkToken(token) {
+  const checkToken = jwt.verify(token, secret);
+  return checkToken;
+}
