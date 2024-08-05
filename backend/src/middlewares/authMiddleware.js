@@ -1,6 +1,6 @@
 import { config } from "dotenv";
-import { checkToken } from "../utils/jwt";
-import { findUserByEmail } from "../repository/user-mysql-repository";
+import { checkToken } from "../utils/jwt.js";
+import { findUserByEmail } from "../repository/user-mysql-repository.js";
 config();
 
 const authMiddleware = async (req, _res, next) => {
