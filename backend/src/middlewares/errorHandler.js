@@ -1,6 +1,8 @@
-import AbstractError from "../errors/AbstractErrors";
+import AbstractError from "../errors/AbstractErrors.js";
 
-export const ErrorHandler = (error, req, res) => {
+// eslint-disable-next-line no-unused-vars
+export const ErrorHandler = (error, req, res, _next) => {
+  console.log("AQUIII");
   console.log(error);
   if (error instanceof AbstractError) {
     const { statusCode, message } = error;

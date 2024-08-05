@@ -1,4 +1,4 @@
-import AbstractError from "./AbstractErrors";
+import AbstractError from "./AbstractErrors.js";
 
 export default class UnauthorizedError extends AbstractError {
   constructor(message) {
