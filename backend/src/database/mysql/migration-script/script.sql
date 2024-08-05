@@ -16,5 +16,5 @@ CREATE TABLE book (
   title VARCHAR(255) NOT NULL,
   author VARCHAR(255) NOT NULL,
   fileUrl VARCHAR(255) NOT NULL,
-  uploadDate DATETIME NOT NULL
+  publishedAt DATETIME NOT NULL
 );
