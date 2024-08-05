@@ -28,7 +28,7 @@ export async function getAllBooks() {
 
 export async function deleteBookById(id) {
   const query = "DELETE FROM TeacherAi.book WHERE id = ?";
-  const { affectedRows } = await pool.execute(query, [id]);
+  await pool.execute(query, [id]);
 
-  return affectedRows > 0;
+  return true;
 }
