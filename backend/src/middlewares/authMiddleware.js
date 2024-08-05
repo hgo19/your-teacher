@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 import { checkToken } from "../utils/jwt.js";
 import { findUserByEmail } from "../repository/user-mysql-repository.js";
+import NotFoundError from "../errors/NotFoundError.js";
+import UnauthorizedError from "../errors/UnauthorizedError.js";
 
 config();
 
@@ -13,17 +15,17 @@ const authMiddleware = async (req, res, next) => {
         : null;
 
     if (!token) {
-      throw new Error("No token provided");
+      throw new UnauthorizedError("No token provided");
     }
 
     const decoded = await checkToken(token);
     if (!decoded || !decoded.email) {
-      throw new Error("Invalid token");
+      throw new UnauthorizedError("Invalid token");
     }
 
     const user = await findUserByEmail(decoded.email);
     if (!user) {
-      throw new Error("User not found");
+      throw new NotFoundError("User not found");
     }
 
     req.user = user;

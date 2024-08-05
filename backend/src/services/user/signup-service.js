@@ -1,3 +1,4 @@
+import BadRequestError from "../../errors/BadRequestError.js";
 import { saveUser } from "../../repository/user-mysql-repository.js";
 import { hashPassword } from "../../utils/bcrypt.js";
 import { generateToken } from "../../utils/jwt.js";
@@ -29,21 +30,23 @@ function userValidations(input) {
 
   for (const [key, value] of properties) {
     if (typeof value !== "string") {
-      throw new Error(`Property ${key} value needs to be a string`);
+      throw new BadRequestError(`Property ${key} value needs to be a string`);
     }
   }
 
   const emailRgx = /\S+@\S+\.\S+/;
   if (name.length < 3) {
-    throw new Error("Name is invalid.");
+    throw new BadRequestError("Name is invalid.");
   }
 
   if (!emailRgx.test(email)) {
-    throw new Error("Email is invalid");
+    throw new BadRequestError("Email is invalid");
   }
 
   if (password !== passwordConfirmation) {
-    throw new Error("Password and password confirmation are different");
+    throw new BadRequestError(
+      "Password and password confirmation are different",
+    );
   }
 }
 

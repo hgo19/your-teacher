@@ -1,6 +1,7 @@
 import { saveBook } from "../../repository/books-mysql-repository.js";
 import path from "path";
 import saveFile from "../../utils/saveFile.js";
+import BadRequestError from "../../errors/BadRequestError.js";
 
 export async function uploadBookService(data) {
   bookValidations(data);
@@ -28,11 +29,11 @@ function bookValidations(data) {
 
   for (const [key, value] of properties) {
     if (!value) {
-      throw new Error(`Property ${key} is missing`);
+      throw new BadRequestError(`Property ${key} is missing`);
     }
 
     if (key !== "file" && typeof value !== "string") {
-      throw new Error(`Property ${key} value needs to be a string`);
+      throw new BadRequestError(`Property ${key} value needs to be a string`);
     }
   }
 }
