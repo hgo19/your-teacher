@@ -36,7 +36,7 @@ const Login: React.FC = () => {
       const { token } = response.data;
 
       setToken(token);
-      navigate("/books-store");
+      navigate("/");
     } catch (error) {
       console.error("Error logging in:", error);
     }
