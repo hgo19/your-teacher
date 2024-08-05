@@ -4,7 +4,8 @@ import saveFile from "../../utils/saveFile.js";
 
 export async function uploadBookService(data) {
   bookValidations(data);
-  const uploadDir = path.join("..", "..", "..", "uploads");
+  const uploadDir = path.join("public", "uploads");
+
   const filePath = path.join(
     uploadDir,
     `${Date.now()}-${data.file.originalname}`,
@@ -19,7 +20,7 @@ export async function uploadBookService(data) {
 
   await saveBook(bookData);
 
-  await saveFile(data.file);
+  await saveFile(data.file, filePath);
 }
 
 function bookValidations(data) {

@@ -1,9 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
 
-async function saveFile(file) {
-  const uploadDir = path.join("..", "..", "uploads");
-  const filePath = path.join(uploadDir, `${Date.now()}-${file.originalname}`);
+async function saveFile(file, filePath) {
+  const uploadDir = path.join("public", "uploads");
 
   await fs.mkdir(uploadDir, { recursive: true });
 

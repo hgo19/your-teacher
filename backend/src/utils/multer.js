@@ -2,6 +2,17 @@ import multer from "multer";
 
 const storage = multer.memoryStorage();
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "application/pdf") {
+    cb(null, true);
+  } else {
+    cb(new Error("Invalid file type"), false);
+  }
+};
 
-export default upload;
+const uploadMiddleware = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+}).single("file");
+
+export default uploadMiddleware;

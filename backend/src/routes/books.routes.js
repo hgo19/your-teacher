@@ -1,12 +1,11 @@
 import { Router } from "express";
 import uploadBookController from "../controller/books/upload-book-controller.js";
-import upload from "../utils/multer.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
+import uploadMiddleware from "../utils/multer.js";
 
 const booksRoute = Router();
 booksRoute.use(authMiddleware);
-const multerMiddleware = upload.single("file");
 
-booksRoute.post("/upload", multerMiddleware, uploadBookController);
+booksRoute.post("/upload", uploadMiddleware, uploadBookController);
 
 export default booksRoute;
