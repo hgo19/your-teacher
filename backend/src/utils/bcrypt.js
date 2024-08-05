@@ -6,4 +6,9 @@ async function hashPassword(password) {
   return await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
 }
 
-export { hashPassword };
+async function testPassword(password, hashedPassword) {
+  const passwordMatch = await bcrypt.compare(password, hashedPassword);
+  return passwordMatch;
+}
+
+export { hashPassword, testPassword };
