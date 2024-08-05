@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --experimental-specifier-resolution=node src/server.js"
+    "dev": "nodemon --experimental-specifier-resolution=node src/server.js",
+    "db:migrate": "node --experimental-specifier-resolution=node src/database/mysql/migration-script/run-migration.js"
   },
   "type": "module",
   "target": "ES2020",
