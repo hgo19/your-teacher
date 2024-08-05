@@ -11,3 +11,24 @@ export async function saveBook(input) {
 
   return insertId;
 }
+
+export async function getBookById(id) {
+  const query = "SELECT * FROM TeacherAi.book WHERE id = ?";
+  const [rows] = await pool.execute(query, [id]);
+
+  return rows[0] || null;
+}
+
+export async function getAllBooks() {
+  const query = "SELECT * FROM TeacherAi.book";
+  const [rows] = await pool.execute(query);
+
+  return rows;
+}
+
+export async function deleteBookById(id) {
+  const query = "DELETE FROM TeacherAi.book WHERE id = ?";
+  const { affectedRows } = await pool.execute(query, [id]);
+
+  return affectedRows > 0;
+}
