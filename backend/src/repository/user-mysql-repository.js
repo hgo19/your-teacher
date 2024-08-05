@@ -11,3 +11,9 @@ export async function saveUser(input) {
 
   return insertId;
 }
+
+export async function findUserByEmail(email) {
+  const query = "SELECT * FROM TeacherAi.user AS u WHERE u.email = ?";
+  const [[row]] = await pool.execute(query, [email]);
+  return row;
+}
