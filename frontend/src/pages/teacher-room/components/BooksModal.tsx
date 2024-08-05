@@ -37,6 +37,7 @@ const BooksModal: React.FC<BooksListModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     const fetchBooks = async () => {
+      setLoading(true);
       try {
         const response = await api.get("/books", {
           headers: {
@@ -51,8 +52,10 @@ const BooksModal: React.FC<BooksListModalProps> = ({ isOpen, onClose }) => {
       }
     };
 
-    fetchBooks();
-  }, [token]);
+    if (isOpen) {
+      fetchBooks();
+    }
+  }, [isOpen, token]);
 
   const handleDelete = async (id: number) => {
     try {

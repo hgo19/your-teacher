@@ -97,14 +97,16 @@ const TeacherRoom: React.FC = () => {
             objectFit="cover"
             ml="4"
           />
-          <VStack align="start" ml="4">
-            <Text fontSize="lg" fontWeight="bold">
-              Resposta:
-            </Text>
-            <animated.div style={springProps}>
-              <Text>{answer}</Text>
-            </animated.div>
-          </VStack>
+          {answer && (
+            <VStack align="start" ml="4">
+              <Text fontSize="lg" fontWeight="bold">
+                Resposta:
+              </Text>
+              <animated.div style={springProps}>
+                <Text>{answer}</Text>
+              </animated.div>
+            </VStack>
+          )}
         </HStack>
       </Center>
 
