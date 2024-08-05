@@ -23,13 +23,23 @@ import { useForm } from "react-hook-form";
 import api from "../../@global/api/api";
 import { useAuth } from "../../@global/context/auth-context";
 import { animated, useSpring } from "@react-spring/web";
+import BooksModal from "./components/BooksModal";
 
 interface FormData {
   question: string;
 }
 
 const TeacherRoom: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isUploadOpen,
+    onOpen: onUploadOpen,
+    onClose: onUploadClose,
+  } = useDisclosure();
+  const {
+    isOpen: isBooksOpen,
+    onOpen: onBooksOpen,
+    onClose: onBooksClose,
+  } = useDisclosure();
   const {
     register,
     handleSubmit,
@@ -114,6 +124,7 @@ const TeacherRoom: React.FC = () => {
             colorScheme="teal"
             isLoading={loading}
             loadingText="Carregando"
+            onClick={onBooksOpen}
           >
             Listar livros
           </Button>
@@ -121,7 +132,7 @@ const TeacherRoom: React.FC = () => {
           <Button
             leftIcon={loading ? <Spinner size="sm" /> : <AiOutlineUpload />}
             colorScheme="teal"
-            onClick={onOpen}
+            onClick={onUploadOpen}
             isLoading={loading}
             loadingText="Carregando"
           >
@@ -142,7 +153,8 @@ const TeacherRoom: React.FC = () => {
         </HStack>
       </form>
 
-      <UploadModal isOpen={isOpen} onClose={onClose} />
+      <UploadModal isOpen={isUploadOpen} onClose={onUploadClose} />
+      <BooksModal isOpen={isBooksOpen} onClose={onBooksClose} />
     </Box>
   );
 };
