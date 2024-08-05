@@ -11,18 +11,20 @@ import {
   Text,
   VStack,
   Spinner,
+  useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import {
   AiOutlineFileSearch,
   AiOutlineUpload,
   AiOutlineQuestionCircle,
+  AiOutlineLogout,
 } from "react-icons/ai";
-import { useDisclosure } from "@chakra-ui/react";
-import UploadModal from "./components/UploadModal";
 import { useForm } from "react-hook-form";
 import api from "../../@global/api/api";
 import { useAuth } from "../../@global/context/auth-context";
 import { animated, useSpring } from "@react-spring/web";
+import UploadModal from "./components/UploadModal";
 import BooksModal from "./components/BooksModal";
 
 interface FormData {
@@ -47,7 +49,8 @@ const TeacherRoom: React.FC = () => {
   } = useForm<FormData>();
   const [answer, setAnswer] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const { token } = useAuth();
+  const { token, logout } = useAuth();
+  const toast = useToast();
 
   const springProps = useSpring({
     opacity: answer ? 1 : 0,
@@ -76,6 +79,18 @@ const TeacherRoom: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logout bem-sucedido.",
+      description: "Você foi desconectado.",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    window.location.href = "/";
   };
 
   return (
@@ -151,6 +166,14 @@ const TeacherRoom: React.FC = () => {
             loadingText="Carregando"
           >
             Realizar pergunta
+          </Button>
+
+          <Button
+            leftIcon={<AiOutlineLogout />}
+            colorScheme="red"
+            onClick={handleLogout}
+          >
+            Logout
           </Button>
         </HStack>
       </form>
