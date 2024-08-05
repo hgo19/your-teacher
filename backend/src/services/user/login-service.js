@@ -1,6 +1,6 @@
-import { findUserByEmail } from "../../repository/user-mysql-repository";
-import { testPassword } from "../../utils/bcrypt";
-import { generateToken } from "../../utils/jwt";
+import { findUserByEmail } from "../../repository/user-mysql-repository.js";
+import { testPassword } from "../../utils/bcrypt.js";
+import { generateToken } from "../../utils/jwt.js";
 
 async function loginService(input) {
   const { email, password } = input;
