@@ -3,7 +3,6 @@ import { config } from "dotenv";
 config();
 
 const dbPort = Number(process.env.DB_PORT);
-console.log(dbPort);
 
 const connection = mysql.createPool({
   host: process.env.MYSQL_HOST,
