@@ -14,8 +14,12 @@ import {
   AiOutlineUpload,
   AiOutlineQuestionCircle,
 } from "react-icons/ai";
+import { useDisclosure } from "@chakra-ui/react";
+import UploadModal from "./components/UploadModal";
 
-const RoboPage: React.FC = () => {
+const TeacherRoom: React.FC = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box
       w="800px"
@@ -45,7 +49,11 @@ const RoboPage: React.FC = () => {
           Listar livros
         </Button>
 
-        <Button leftIcon={<AiOutlineUpload />} colorScheme="teal">
+        <Button
+          leftIcon={<AiOutlineUpload />}
+          colorScheme="teal"
+          onClick={onOpen}
+        >
           Upload Livro
         </Button>
 
@@ -53,8 +61,10 @@ const RoboPage: React.FC = () => {
           Realizar pergunta
         </Button>
       </HStack>
+
+      <UploadModal isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 };
 
-export default RoboPage;
+export default TeacherRoom;
