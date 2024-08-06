@@ -99,3 +99,8 @@ Before logging in, you need to create an account. Please visit the following pat
 ```
 
 Follow the prompts to register your account. Once your account is created, you will be able to log in and access the application.
+
+## Your home page
+Your home page will be something like this, and you are free to explore
+
+![Example Image](docs/homepage.png)
