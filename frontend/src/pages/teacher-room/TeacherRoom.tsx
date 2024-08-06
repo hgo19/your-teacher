@@ -104,6 +104,12 @@ const TeacherRoom: React.FC = () => {
       boxShadow="lg"
     >
       <Center mb="6">
+        <Text fontSize="2xl" fontWeight="bold" mb="4">
+          Teacher Room
+        </Text>
+      </Center>
+
+      <Center mb="6">
         <HStack spacing="4" align="start">
           <Image
             src="/teacher.svg"
