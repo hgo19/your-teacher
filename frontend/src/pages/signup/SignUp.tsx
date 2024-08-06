@@ -23,7 +23,7 @@ interface FormData {
   passwordConfirmation: string;
 }
 
-const Register: React.FC = () => {
+const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -166,4 +166,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default SignUp;
