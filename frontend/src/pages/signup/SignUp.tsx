@@ -8,6 +8,8 @@ import {
   FormLabel,
   Input,
   VStack,
+  Text,
+  Link,
 } from "@chakra-ui/react";
 import api from "../../@global/api/api";
 import axios from "axios";
@@ -147,6 +149,17 @@ const Register: React.FC = () => {
           >
             Register
           </Button>
+
+          <Text mt="4" textAlign="center">
+            Already have an account?{" "}
+            <Link
+              color="teal.500"
+              onClick={() => navigate("/login")}
+              fontWeight="bold"
+            >
+              Login
+            </Link>
+          </Text>
         </VStack>
       </form>
     </Box>

@@ -8,6 +8,8 @@ import {
   FormLabel,
   Input,
   VStack,
+  Text,
+  Link,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../@global/context/auth-context";
@@ -96,6 +98,17 @@ const Login: React.FC = () => {
           >
             Login
           </Button>
+
+          <Text mt="4" textAlign="center">
+            {`Don't have an account?`}{" "}
+            <Link
+              color="teal.500"
+              onClick={() => navigate("/signup")}
+              fontWeight="bold"
+            >
+              Sign up
+            </Link>
+          </Text>
         </VStack>
       </form>
     </Box>
