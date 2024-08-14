@@ -60,7 +60,7 @@ npm install
 Before running the backend server, you need to execute the database migration. Run the following script:
 
 ```sh
-npm run db:create
+npm run db:migrate
 ```
 
 ### Start the Backend Server
